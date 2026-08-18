@@ -56,3 +56,14 @@ curl http://localhost:3000/ping
 | `npm start`    | Start the server                    |
 | `npm run dev`  | Start with nodemon + tsx (reload)   |
 | `npm run build`| Type-check and compile to `dist/`   |
+
+
+## Environment Variables & Secrets
+
+The .env file containing sensitive configuration and credentials is not stored in plaintext in the repository. Instead, it is encrypted using GPG with AES-256 and stored as .env.gpg.
+
+To decrypt the environment file during deployment:
+
+```bash
+gpg --output .env --decrypt .env.gpg
+```
