@@ -15,4 +15,7 @@ export const env = {
   ENVIRONMENT: process.env.ENVIRONMENT || "development",
   MONGODB_URI: required("MONGODB_URI"),
   MONGODB_DB_NAME: process.env.MONGODB_DB_NAME || "montu",
+  JWT_SECRET: required("JWT_SECRET"),
+  JWT_EXPIRES_IN: process.env.JWT_EXPIRES_IN || "1d",
+  BCRYPT_SALT_ROUNDS: Number(process.env.BCRYPT_SALT_ROUNDS) || 12,
 };
