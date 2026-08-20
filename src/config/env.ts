@@ -4,9 +4,20 @@ dotenv.config();
 
 const required = (key: string): string => {
   const value = process.env[key];
+
   if (!value) {
-    throw new Error(`Missing required environment variable: ${key}`);
+    // Names only, never values. Seeing what *did* arrive is the fastest way to
+    // tell a typo apart from "the host injected nothing at all".
+    const present = Object.keys(process.env)
+      .filter((name) => !name.startsWith("npm_"))
+      .sort()
+      .join(", ");
+
+    throw new Error(
+      `Missing required environment variable: ${key}\nVariables present at startup: ${present}`
+    );
   }
+
   return value;
 };
 
