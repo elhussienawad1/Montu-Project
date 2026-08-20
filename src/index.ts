@@ -2,6 +2,7 @@ import express, { type Application } from "express";
 import { env } from "./config/env";
 import { connectDB } from "./config/db";
 import User from "./models/user.model";
+import UserProfile from "./models/userProfile.model";
 import routes from "./routes";
 import { errorHandler, notFound } from "./middleware/errorHandler";
 
@@ -21,7 +22,8 @@ const start = async (): Promise<void> => {
   try {
     await connectDB();
 
-    await User.init();
+    // Builds the unique indexes the duplicate checks rely on.
+    await Promise.all([User.init(), UserProfile.init()]);
 
     app.listen(env.PORT, () => {
       console.log(`Server running at http://localhost:${env.PORT}`);
