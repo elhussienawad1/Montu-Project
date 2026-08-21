@@ -134,3 +134,8 @@ gpg --output .env --decrypt .env.gpg
 
 See `.env.example` for the full list of variables. `MONGODB_URI` and
 `JWT_SECRET` are required — the server refuses to start without them.
+
+
+## Postman Collection Link
+https://elhussienawads-team.postman.co/workspace/My-Workspace~3767f050-f008-4209-8057-816a1d4171cd/collection/41673862-f07acc23-54c8-445f-bd2b-bdbd491bbb81?action=share&source=copy-link&creator=41673862
+
